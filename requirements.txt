@@ -1,0 +1,6 @@
+tensorflow==2.9
+tensorflow_hub
+streamlit==1.12.2
+numpy
+wget
+Flask==2.2.2
