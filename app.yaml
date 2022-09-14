@@ -1,2 +1,8 @@
 runtime: python39
-instance_class: F4_1G
+
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 4
+  disk_gb: 10
