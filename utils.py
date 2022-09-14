@@ -17,8 +17,8 @@ class STATUS:
 
 @dataclass
 class CONFIG:
-    MODEL_URL = 'https://storage.googleapis.com/pizza-vs-icecream.appspot.com/pizza_vs_icecream_model.zip'
-    MODEL_PATH = 'models/pizza_vs_icecream_model.h5'
+    MODEL_URL = 'https://storage.googleapis.com/pizza-vs-icecream.appspot.com/pizza_vs_icecream_model.h5'
+    MODEL_PATH = '/tmp/pizza_vs_icecream_model.h5'
     IMAGE_SHAPE = 480
     CLASS_LABEL = {
         0: 'Ice-cream',
@@ -28,11 +28,11 @@ class CONFIG:
 
 def load_model(model_url=CONFIG.MODEL_URL, model_path=CONFIG.MODEL_PATH):
     zipfile_path = wget.download(
-        url=model_url
+        url=model_url, out=model_path
     )
 
-    with ZipFile(zipfile_path) as zip:
-        zip.extractall()
+    # with ZipFile(zipfile_path) as zip:
+    #     zip.extractall()
     
     model = tf.keras.models.load_model(
         model_path,
