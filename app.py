@@ -6,7 +6,7 @@ import streamlit as st
 
 def predict_image(image):
     response = requests.post(
-        url='http://127.0.0.1:5000/predict/',
+        url='https://pizza-vs-icecream.el.r.appspot.com/predict/',
         data=json.dumps({
             'image': base64.b64encode(image).decode('utf8')
         }),
