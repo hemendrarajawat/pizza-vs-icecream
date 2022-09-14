@@ -17,7 +17,7 @@ class STATUS:
 
 @dataclass
 class CONFIG:
-    MODEL_URL = 'https://storage.googleapis.com/pizza-vs-icecream-backend.appspot.com/pizza_vs_icecream_model.zip'
+    MODEL_URL = 'https://storage.googleapis.com/pizza-vs-icecream.appspot.com/pizza_vs_icecream_model.zip'
     MODEL_PATH = 'models/pizza_vs_icecream_model.h5'
     IMAGE_SHAPE = 480
     CLASS_LABEL = {
