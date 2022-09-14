@@ -7,6 +7,16 @@ app = Flask(__name__)
 
 model = load_model()
 
+@app.route('/')
+def root():
+    return (
+        jsonify({
+            'status': 'success'
+        }),
+        STATUS.SUCCESS
+    )
+
+
 @app.route('/predict/', methods=['POST'])
 def predict():
     try:
