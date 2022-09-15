@@ -1,0 +1,16 @@
+Dockerfile
+README.md
+*.pyc
+*.pyo
+*.pyd
+__pycache__
+.pytest_cache
+.ipynb_checkpoints
+.vscode
+.idea
+backup
+data
+models
+app.py
+app.yaml
+train_script.ipynb

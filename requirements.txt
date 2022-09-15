@@ -1,6 +1,7 @@
+Flask==2.2.2
+gunicorn==20.1.0
+wget
+numpy
 tensorflow==2.9
 tensorflow_hub
 streamlit==1.12.2
-numpy
-wget
-Flask==2.2.2

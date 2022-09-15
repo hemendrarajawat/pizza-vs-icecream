@@ -1,9 +1,12 @@
 # Import Library
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
+import shutil
 import base64
 import wget
 import numpy as np
 import tensorflow as tf
-from zipfile import ZipFile
 from tensorflow_hub import KerasLayer
 from dataclasses import dataclass
 
@@ -17,8 +20,9 @@ class STATUS:
 
 @dataclass
 class CONFIG:
+    ROOT_DIR = './models/'
     MODEL_URL = 'https://storage.googleapis.com/pizza-vs-icecream.appspot.com/pizza_vs_icecream_model.h5'
-    MODEL_PATH = '/tmp/pizza_vs_icecream_model.h5'
+    MODEL_PATH = os.path.join(ROOT_DIR, 'pizza_vs_icecream_model.h5')
     IMAGE_SHAPE = 480
     CLASS_LABEL = {
         0: 'Ice-cream',
@@ -27,12 +31,13 @@ class CONFIG:
 
 
 def load_model(model_url=CONFIG.MODEL_URL, model_path=CONFIG.MODEL_PATH):
-    zipfile_path = wget.download(
+    # Clean the model directory
+    shutil.rmtree(CONFIG.ROOT_DIR, ignore_errors=True)
+    os.makedirs(CONFIG.ROOT_DIR, exist_ok=True)
+
+    wget.download(
         url=model_url, out=model_path
     )
-
-    # with ZipFile(zipfile_path) as zip:
-    #     zip.extractall()
     
     model = tf.keras.models.load_model(
         model_path,
